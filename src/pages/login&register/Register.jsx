@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext);
 
     const [error , setError] = useState('')
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    // pass asdfF#
+
     const onSubmit = data => {
         setError('')
         console.log(data)
@@ -14,6 +20,16 @@ const Register = () => {
             setError('confirm password did not match')
             return
         }
+
+        createUser(data.email, data.password)
+        .then(result => {
+            const user = result.user ;
+            console.log(user)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
     };
 
 
@@ -49,7 +65,7 @@ const Register = () => {
                 </div>
                 <div>
                     <p className='text-red-600'>{error}</p>
-                    <p>Already Have An Account ? Please <Link to='/login' className='text-red-600'>Register</Link></p>
+                    <p>Already Have An Account ? Please <Link to='/login' className='text-red-600'>Login</Link></p>
                 </div>
             </form>
         </div>

@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
 
     const [show , setShow] = useState(false)
+    const {loginUser} = useContext(AuthContext) ;
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+
     const onSubmit = data => {
         console.log(data)
+        loginUser(data.email, data.password)
+        .then(result => {
+            const user = result.user ;
+            console.log(user)
+        })
+        .catch(err=> {
+            console.log(err)
+        })
     };
 
 
