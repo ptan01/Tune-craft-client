@@ -7,7 +7,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 const Login = () => {
 
     const [show , setShow] = useState(false)
-    const {loginUser} = useContext(AuthContext) ;
+    const {loginUser, googleLogin} = useContext(AuthContext) ;
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -24,6 +24,19 @@ const Login = () => {
             console.log(err)
         })
     };
+
+    const loginWithGoogle = (e)=> {
+        e.preventDefault()
+        
+        googleLogin()
+        .then(result => {
+            const user = result.user ;
+            console.log(user)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
 
 
@@ -44,7 +57,7 @@ const Login = () => {
                 <div>
                     <input className='btn btn-sm w-full' type="submit" value="Login" />
                     <br />
-                    <button className='btn btn-sm w-full mt-5'><FaGoogle className='text-xl'></FaGoogle> Google Login</button>
+                    <button onClick={loginWithGoogle} className='btn btn-sm w-full mt-5'><FaGoogle className='text-xl'></FaGoogle> Google Login</button>
                 </div>
                 <div>
                     <p>Don't Have An Account ? Please <Link to='/register' className='text-red-600'>Register</Link></p>
