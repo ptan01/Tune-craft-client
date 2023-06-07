@@ -18,9 +18,9 @@ const Navbar = () => {
 
     const navitem = <>
         <li><Link to='/'>Home</Link></li>
-        <li><a>Item 3</a></li>
-        <li><a>Item 3</a></li>
-        <li><a>Item 3</a></li>
+        <li><Link to='/instructor'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
         </>
 
     return (
