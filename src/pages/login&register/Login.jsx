@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+const Login = () => {
+
+    const [show , setShow] = useState(false)
+
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        console.log(data)
+    };
+
+
+
+    return (
+        <div className='flex h-[50vh] items-center justify-center'>
+            <form className='border rounded-lg p-5 h-[40vh] space-y-5' onSubmit={handleSubmit(onSubmit)}>
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input {...register("email")} type="email" placeholder="Email" className="input input-bordered w-full max-w-xs" />
+                </div>
+                <div>
+                    <label htmlFor="password">Password</label>
+                    <span className='flex items-center'>
+                        <input {...register("password")} type={show ? 'text' : 'password'} placeholder="Password" className="input input-bordered w-full max-w-xs" />
+                        {show ? <FaEyeSlash onClick={()=> setShow(!show)} className='text-2xl'></FaEyeSlash> :  <FaEye onClick={()=> setShow(!show)} className='text-2xl'></FaEye>}
+                    </span>
+                </div>
+                <div>
+                    <input className='btn btn-sm w-full' type="submit" value="Login" />
+                    <br />
+                    <button className='btn btn-sm w-full mt-5'><FaGoogle className='text-xl'></FaGoogle> Google Login</button>
+                </div>
+                <div>
+                    <p>Don't Have An Account ? Please <Link to='/register' className='text-red-600'>Register</Link></p>
+                </div>
+            </form>
+        </div>
+    );
+};
+
+export default Login;
