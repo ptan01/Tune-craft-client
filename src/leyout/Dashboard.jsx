@@ -4,7 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 const Dashboard = () => {
 
 
-    const instructor = true ;
+    const instructor = false ;
 
     const admin = false ;
 
@@ -24,17 +24,24 @@ const Dashboard = () => {
                     {
                         instructor && <>
                         <li><Link to='/dashboard/addclass'>Add a class</Link></li>
+                        <li><Link to='/dashboard/myclass'>My Classes</Link></li>
                         <li><Link to='/'>Home</Link></li>
-                        <li><a>Sidebar Item 2</a></li>
                         </> 
 
                     }
                     {
                          admin &&  <>
-                         <li><Link to='/dashboard/selectclass'>Selected Classes</Link></li>
+                         <li><Link to='/dashboard/selectclass'>Manage Classes</Link></li>
                          <li><Link to='/'>Home</Link></li>
                          <li><a>Sidebar Item 2</a></li>
                          </>
+                    }
+                    {
+                        !instructor && !admin && <>
+                        <li><Link to='/dashboard/selectclass'>Selected Classes</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><a>Sidebar Item 2</a></li>
+                        </>
                     }
                 </ul>
 

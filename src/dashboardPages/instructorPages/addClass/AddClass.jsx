@@ -3,6 +3,7 @@ import { AuthContext } from '../../../provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import useBaseaxios from '../../../hooks/useBaseaxios';
+import Swal from 'sweetalert2';
 
 const AddClass = () => {
 
@@ -23,7 +24,7 @@ const AddClass = () => {
             className,
             price : parseFloat(price),
             seats : parseFloat(seats),
-            img : 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' ,
+            img : 'https://images.unsplash.com/photo-1513696447688-c301fedbda2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80' ,
             instructorEmail : user?.email ,
             instructorName : user?.displayName,
             status: 'pending'
@@ -33,6 +34,15 @@ const AddClass = () => {
         axiosInstance.post('/classes', classDetail)
         .then(res => {
             console.log(res.data)
+            if(res.data.insertedId){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
         })
 
 

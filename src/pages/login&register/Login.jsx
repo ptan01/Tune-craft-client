@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -18,6 +19,13 @@ const Login = () => {
         loginUser(data.email, data.password)
         .then(result => {
             const user = result.user ;
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your Login has been success',
+                showConfirmButton: false,
+                timer: 1000
+              })
             console.log(user)
         })
         .catch(err=> {
@@ -32,6 +40,13 @@ const Login = () => {
         .then(result => {
             const user = result.user ;
             console.log(user)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your Login has been success',
+                showConfirmButton: false,
+                timer: 1000
+              })
         })
         .catch(err => {
             console.log(err)
