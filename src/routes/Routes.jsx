@@ -7,6 +7,7 @@ import Dashboard from "../leyout/Dashboard";
 import SelectClass from "../dashboardPages/userPages/selectedClasses/SelectClass";
 import Instructors from "../pages/instructors/Instructors";
 import Classes from "../pages/classes/Classes";
+import AddClass from "../dashboardPages/instructorPages/addClass/AddClass";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/selectclass',
                 element: <SelectClass></SelectClass>
+            },
+            {
+                path: '/dashboard/addclass',
+                element: <AddClass></AddClass>
             }
         ]
     }

@@ -2,6 +2,12 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
+
+
+    const instructor = true ;
+
+    const admin = false ;
+
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -15,9 +21,21 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
-                    <li><Link to='/dashboard/selectclass'>Selected Classes</Link></li>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    {
+                        instructor && <>
+                        <li><Link to='/dashboard/addclass'>Add a class</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><a>Sidebar Item 2</a></li>
+                        </> 
+
+                    }
+                    {
+                         admin &&  <>
+                         <li><Link to='/dashboard/selectclass'>Selected Classes</Link></li>
+                         <li><Link to='/'>Home</Link></li>
+                         <li><a>Sidebar Item 2</a></li>
+                         </>
+                    }
                 </ul>
 
             </div>
