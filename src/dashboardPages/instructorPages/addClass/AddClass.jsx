@@ -18,11 +18,21 @@ const AddClass = () => {
 
         axios.post(imgHostUrl, formData)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data.data.display_url)
+                const {className, price, seats,} = data
+                const classDetail = {
+                    className,
+                    price,
+                    seats,
+                    img : res?.data?.data?.display_url ,
+                    instructorEmail : user?.email ,
+                    instructorName : user?.displayName,
+                    status: 'pending'
+                }
+               
             })
-    
 
-        console.log(data)
+        // console.log(data)
     };
 
 

@@ -1,18 +1,19 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../firebase/firebase.config';
+import axios from 'axios';
 
-export const AuthContext = createContext() ;
+export const AuthContext = createContext();
 
 const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider()
 
-    const createUser = (email, pass)=>{
+    const createUser = (email, pass) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, pass)
     }
@@ -22,30 +23,40 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, pass)
     }
 
-    const logOut = ()=> {
+    const logOut = () => {
         setLoading(true)
         return signOut(auth)
     }
 
-    const googleLogin = ()=> {
+    const googleLogin = () => {
         setLoading(true)
-        return signInWithPopup(auth, googleProvider) ;
-    }
-    
-    const updateUser = (name , img)=>{
-        setLoading(true)
-        return 
+        return signInWithPopup(auth, googleProvider);
     }
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth , logedUser => {
-            setLoading(false)
+    const updateUser = (name, img) => {
+        setLoading(true)
+        return
+    }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, logedUser => {
             setUser(logedUser)
+            if (logedUser) {
+                axios.post('http://localhost:5000/jwt', { email: logedUser.email })
+                    .then(res => {
+                        setLoading(false)
+                        localStorage.setItem('access-token', res.data.token)
+                    })
+            }
+            else{
+                localStorage.removeItem('access-token')
+            }
+
         })
 
-        return ()=> unsubscribe()
+        return () => unsubscribe()
 
-    },[])
+    }, [])
 
     const authInfo = {
         user,
