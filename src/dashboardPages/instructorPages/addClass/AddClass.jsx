@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import useBaseaxios from '../../../hooks/useBaseaxios';
 
 const AddClass = () => {
 
     const { user } = useContext(AuthContext)
-
+    const [axiosInstance] = useBaseaxios()
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -16,21 +17,47 @@ const AddClass = () => {
         const formData = new FormData();
         formData.append('image', data.photo[0]);
 
-        axios.post(imgHostUrl, formData)
-            .then(res => {
-                console.log(res.data.data.display_url)
-                const {className, price, seats,} = data
-                const classDetail = {
-                    className,
-                    price,
-                    seats,
-                    img : res?.data?.data?.display_url ,
-                    instructorEmail : user?.email ,
-                    instructorName : user?.displayName,
-                    status: 'pending'
-                }
+
+        const {className, price, seats,} = data
+        const classDetail = {
+            className,
+            price : parseFloat(price),
+            seats : parseFloat(seats),
+            img : 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' ,
+            instructorEmail : user?.email ,
+            instructorName : user?.displayName,
+            status: 'pending'
+        }
+        console.log(classDetail)
+        // classdata post
+        axiosInstance.post('/classes', classDetail)
+        .then(res => {
+            console.log(res.data)
+        })
+
+
+
+        // img Post
+        // axios.post(imgHostUrl, formData)
+        //     .then(res => {
+        //         console.log(res.data.data.display_url)
+        //         const {className, price, seats,} = data
+        //         const classDetail = {
+        //             className,
+        //             price : parseFloat(price),
+        //             seats : parseFloat(seats),
+        //             img : res?.data?.data?.display_url ,
+        //             instructorEmail : user?.email ,
+        //             instructorName : user?.displayName,
+        //             status: 'pending'
+        //         }
+        //         console.log(classDetail)
+        //         axiosInstance.post('/classes', classDetail)
+        //         .then(res => {
+        //             console.log(res.data)
+        //         })
                
-            })
+        //     })
 
         // console.log(data)
     };
