@@ -1,10 +1,24 @@
 import React from 'react';
+import useBaseaxios from '../../hooks/useBaseaxios';
 
 const ClassesCard = ({classes}) => {
 
+    const [axiosInstance] = useBaseaxios()
     
     const handleSelect = (classInfo)=>{
-
+        const {img, className, price, seats, _id} = classInfo
+        const selectedClass = {
+            img, 
+            className,
+            price: parseFloat(price),
+            seats: parseFloat(seats),
+            classId : _id 
+        }
+        axiosInstance.post('/selects', selectedClass )
+        .then(res => {
+            console.log(res.data)
+        })
+        console.log(selectedClass)
     }
 
 
@@ -17,7 +31,7 @@ const ClassesCard = ({classes}) => {
                 <p>Available seats: {classes.seats}</p>
                 <p>Price: ${classes.price}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={handleSelect} disabled={classes.seats < 1 } className="btn btn-primary">Select</button>
+                    <button onClick={()=>handleSelect(classes)} disabled={classes.seats < 1 } className="btn btn-primary">Select</button>
                 </div>
             </div>
         </div>
