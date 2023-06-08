@@ -24,7 +24,7 @@ const AddClass = () => {
             className,
             price : parseFloat(price),
             seats : parseFloat(seats),
-            img : 'https://images.unsplash.com/photo-1513696447688-c301fedbda2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80' ,
+            img : 'https://images.unsplash.com/photo-1619558041249-0523903712e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' ,
             instructorEmail : user?.email ,
             instructorName : user?.displayName,
             status: 'pending'

@@ -3,7 +3,9 @@ import React from 'react';
 const ClassesCard = ({classes}) => {
 
     
+    const handleSelect = (classInfo)=>{
 
+    }
 
 
     return (
@@ -15,7 +17,7 @@ const ClassesCard = ({classes}) => {
                 <p>Available seats: {classes.seats}</p>
                 <p>Price: ${classes.price}</p>
                 <div className="card-actions justify-end">
-                    <button disabled={classes.seats < 1 } className="btn btn-primary">Select</button>
+                    <button onClick={handleSelect} disabled={classes.seats < 1 } className="btn btn-primary">Select</button>
                 </div>
             </div>
         </div>

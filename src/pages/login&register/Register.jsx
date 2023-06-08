@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
@@ -26,7 +27,30 @@ const Register = () => {
             const user = result.user ;
             updateUser(user, data.name, data.photo)
             .then(()=> {
-                
+                const userInfo = {
+                    email : user?.email ,
+                    name : user?.displayName ,
+                    img : user?.photoURL
+                }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.insertedId){
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
             })
             .catch(err=>{
                 console.log(err)
