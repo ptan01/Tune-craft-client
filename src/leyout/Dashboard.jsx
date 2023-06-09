@@ -57,6 +57,9 @@ const Dashboard = () => {
                             <Slide>
                                 <li><Link to='/dashboard/paymenthistory'>Payment History</Link></li>
                             </Slide>
+                            <Slide>
+                                <li><Link to='/dashboard/enrollclass'>Enroll Class</Link></li>
+                            </Slide>
                         </>
                     }
                     <Slide>
