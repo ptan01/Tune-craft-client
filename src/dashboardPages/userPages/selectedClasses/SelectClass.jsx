@@ -1,8 +1,10 @@
 import React from 'react';
+import useSelectClass from '../../../hooks/useSelectClass';
 
 const SelectClass = () => {
 
-    
+    const [selectedclass] = useSelectClass()
+
 
 
     return (

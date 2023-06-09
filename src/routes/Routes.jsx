@@ -9,6 +9,7 @@ import Instructors from "../pages/instructors/Instructors";
 import Classes from "../pages/classes/Classes";
 import AddClass from "../dashboardPages/instructorPages/addClass/AddClass";
 import MyClass from "../dashboardPages/instructorPages/myclass/MyClass";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/instructor',
-                element: <Instructors></Instructors>
+                element: <PrivetRoute><Instructors></Instructors></PrivetRoute>
             },
             {
                 path: '/classes',
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children: [
             {
                 path: '/dashboard/selectclass',
