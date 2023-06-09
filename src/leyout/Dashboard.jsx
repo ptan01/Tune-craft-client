@@ -11,10 +11,12 @@ const Dashboard = () => {
 
     const admin = false;
 
+    // flex flex-col items-center justify-center
+
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content   ">
                 {/* Page content here */}
                 <Outlet></Outlet>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
@@ -53,7 +55,7 @@ const Dashboard = () => {
                                 <li><Link to='/dashboard/selectclass'>Selected Classes <div className="badge badge-secondary badge-outline">{selectedclass.length}</div></Link></li>
                             </Slide>
                             <Slide>
-                                <li><Link to='/dashboard/enrollclass'>Enrolled Class</Link></li>
+                                <li><Link to='/dashboard/paymenthistory'>Payment History</Link></li>
                             </Slide>
                         </>
                     }

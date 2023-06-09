@@ -11,7 +11,8 @@ import AddClass from "../dashboardPages/instructorPages/addClass/AddClass";
 import MyClass from "../dashboardPages/instructorPages/myclass/MyClass";
 import PrivetRoute from "./PrivetRoute";
 import Payment from "../dashboardPages/payment/Payment";
-import EnrollClass from "../dashboardPages/userPages/enrollClass/EnrollClass";
+import EnrollClass from "../dashboardPages/userPages/enrollClass/PaymentHistory";
+import PaymentHistory from "../dashboardPages/userPages/enrollClass/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -54,8 +55,8 @@ const router = createBrowserRouter([
                 element: <SelectClass></SelectClass>
             },
             {
-                path: '/dashboard/enrollclass',
-                element: <EnrollClass></EnrollClass>
+                path: '/dashboard/paymenthistory',
+                element: <PaymentHistory></PaymentHistory>
             },
             // instructor pages
             {

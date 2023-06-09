@@ -13,6 +13,7 @@ const CheckoutForm = ({ classes }) => {
     const [cardError, setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         if (classes.price > 0) {
@@ -53,7 +54,7 @@ const CheckoutForm = ({ classes }) => {
             console.log(paymentMethod)
         }
 
-
+        setLoading(true) 
         const { paymentIntent, error: carderror } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -72,8 +73,13 @@ const CheckoutForm = ({ classes }) => {
         }
 
         console.log(paymentIntent)
+
+
+      
+
         if (paymentIntent.status === "succeeded") {
 
+           
             // reduced seats 
             axiosInstance.patch(`/selects/reduced-seats?id=${classes.classId}`)
                 .then(res => {
@@ -94,14 +100,14 @@ const CheckoutForm = ({ classes }) => {
 
             axiosInstance.post('/payments', paymentDetails)
                 .then(res => {
-                    console.log(res.data)
+                    console.log(res)
                 })
 
 
             // deleted form selected class and insert enrollPayment Db
             axiosInstance.delete(`/selects/delete/${classes._id}`)
                 .then(res => {
-                    console.log(res.data)
+                    console.log(res)
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -112,11 +118,12 @@ const CheckoutForm = ({ classes }) => {
                     navigate('/dashboard/selectclass')
                 })
 
-
-
+                
+             
         }
+        setLoading(false)
 
-
+       
     }
 
 
@@ -139,7 +146,7 @@ const CheckoutForm = ({ classes }) => {
                     },
                 }}
             />
-            <button className='btn btn-sm mt-5' type="submit" disabled={!stripe || !clientSecret}>
+            <button className='btn btn-sm mt-5' type="submit" disabled={!stripe || !clientSecret || loading}>
                 Pay
             </button>
         </form>
