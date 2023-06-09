@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { Fade,Flip,Hinge ,Slide} from "react-awesome-reveal";
 
 const Dashboard = () => {
 
@@ -23,26 +24,45 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
                     {
                         instructor && <>
+                        <Slide>
                         <li><Link to='/dashboard/addclass'>Add a class</Link></li>
+                        </Slide>
+                        <Slide>
                         <li><Link to='/dashboard/myclass'>My Classes</Link></li>
+                        </Slide>
+                        <Slide>
                         <li><Link to='/'>Home</Link></li>
+                        </Slide>
                         </> 
 
                     }
                     {
                          admin &&  <>
+                         <Slide>
                          <li><Link to='/dashboard/selectclass'>Manage Classes</Link></li>
+                         </Slide>
+                         <Slide>
                          <li><Link to='/'>Home</Link></li>
+                         </Slide>
+                         <Slide>
                          <li><a>Sidebar Item 2</a></li>
+                         </Slide>
                          </>
                     }
                     {
                         !instructor && !admin && <>
+                        <Slide>
                         <li><Link to='/dashboard/selectclass'>Selected Classes</Link></li>
+                        </Slide>
+                        <Slide>
                         <li><Link to='/'>Home</Link></li>
+                        </Slide>
+                        <Slide>
                         <li><a>Sidebar Item 2</a></li>
+                        </Slide>
                         </>
                     }
+                    
                 </ul>
 
             </div>

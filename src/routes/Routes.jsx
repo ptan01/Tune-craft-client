@@ -10,6 +10,7 @@ import Classes from "../pages/classes/Classes";
 import AddClass from "../dashboardPages/instructorPages/addClass/AddClass";
 import MyClass from "../dashboardPages/instructorPages/myclass/MyClass";
 import PrivetRoute from "./PrivetRoute";
+import Payment from "../dashboardPages/payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children: [
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>
+            },
             {
                 path: '/dashboard/selectclass',
                 element: <SelectClass></SelectClass>

@@ -13,8 +13,8 @@ const useSelectClass = () => {
         enabled: !loading,
         queryFn: async ()=>{
             const req = await axiosInstance(`/selects?email=${user?.email}`)
-            console.log(req)
-            return req
+            console.log(req.data)
+            return req.data
         }
     })
 
