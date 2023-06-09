@@ -3,12 +3,14 @@ import useBaseaxios from '../../hooks/useBaseaxios';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import useSelectClass from '../../hooks/useSelectClass';
 
 const ClassesCard = ({classes}) => {
 
     const [axiosInstance] = useBaseaxios()
     const {user} = useContext(AuthContext)
     const navigate = useNavigate()
+    const [, refetch] = useSelectClass()
     
     const handleSelect = (classInfo)=>{
 
@@ -28,14 +30,15 @@ const ClassesCard = ({classes}) => {
               })
         }
 
-        const {img, className, price, seats, _id} = classInfo
+        const {img, className, price, seats, _id,instructorEmail} = classInfo
         const selectedClass = {
             img, 
             className,
             price: parseFloat(price),
             seats: parseFloat(seats),
             classId: _id ,
-            studentEmail: user?.email
+            studentEmail: user?.email,
+            instructorEmail
         }
         axiosInstance.post('/selects', selectedClass )
         .then(res => {
@@ -47,6 +50,7 @@ const ClassesCard = ({classes}) => {
                     showConfirmButton: false,
                     timer: 1000
                   })
+                refetch()
             }
             console.log(res.data)
         })

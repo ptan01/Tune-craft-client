@@ -1,27 +1,29 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import useSelectClass from '../../hooks/useSelectClass';
 
 const Navbar = () => {
 
-    const {user, logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    const [selectedclass] = useSelectClass()
 
-    const handleLogOut = ()=> {
+    const handleLogOut = () => {
         logOut()
-        .then(()=>{
+            .then(() => {
 
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     const navitem = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructor'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
-        </>
+        {user && <li><Link to='/dashboard'>Dashboard <div className="badge">{selectedclass.length}</div></Link></li>}
+    </>
 
     return (
         <div className="navbar bg-base-100">
@@ -42,7 +44,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <button onClick={handleLogOut} className="btn">LogOut</button> : <Link className='btn' to='/login'>Login</Link>}
+                {user ? <>
+                    <button onClick={handleLogOut} className="btn btn-sm">LogOut</button>
+                    <div className="avatar placeholder">
+                        <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                            <img src={user.photoURL} alt="" />
+                        </div>
+                    </div>
+                </> : <Link className='btn' to='/login'>Login</Link>}
+
             </div>
         </div>
     );

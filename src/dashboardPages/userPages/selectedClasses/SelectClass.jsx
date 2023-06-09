@@ -1,11 +1,42 @@
 import React from 'react';
 import useSelectClass from '../../../hooks/useSelectClass';
 import { Link } from 'react-router-dom';
+import useBaseaxios from '../../../hooks/useBaseaxios';
+import Swal from 'sweetalert2';
 
 const SelectClass = () => {
 
-    const [selectedclass] = useSelectClass()
+    const [selectedclass, refetch] = useSelectClass()
+    const [axiosInstance] = useBaseaxios()
 
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosInstance.delete(`/selects/${id}`)
+                .then(res => {
+                    console.log(res.data)
+                    if(res.data.deletedCount > 0){
+                        refetch()
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          )
+                    }
+                })
+            
+            }
+          })
+    }
 
 
     return (
@@ -44,7 +75,7 @@ const SelectClass = () => {
                                    <Link to={`/dashboard/payment/${classes._id}`}><button className="btn btn-ghost btn-xs">Pay</button></Link>
                                 </td>
                                 <td>
-                                    <button className="btn btn-ghost btn-xs">Delete</button>
+                                    <button onClick={()=> handleDelete(classes._id)} className="btn btn-ghost btn-xs">Delete</button>
                                 </td>
                             </tr>)
                         }

@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Fade,Flip,Hinge ,Slide} from "react-awesome-reveal";
+import { Fade, Flip, Hinge, Slide } from "react-awesome-reveal";
+import useSelectClass from '../hooks/useSelectClass';
 
 const Dashboard = () => {
 
+    const [selectedclass] = useSelectClass()
 
-    const instructor = false ;
+    const instructor = false;
 
-    const admin = false ;
+    const admin = false;
 
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
@@ -24,45 +26,41 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
                     {
                         instructor && <>
-                        <Slide>
-                        <li><Link to='/dashboard/addclass'>Add a class</Link></li>
-                        </Slide>
-                        <Slide>
-                        <li><Link to='/dashboard/myclass'>My Classes</Link></li>
-                        </Slide>
-                        <Slide>
-                        <li><Link to='/'>Home</Link></li>
-                        </Slide>
-                        </> 
+                            <Slide>
+                                <li><Link to='/dashboard/addclass'>Add a class</Link></li>
+                            </Slide>
+                            <Slide>
+                                <li><Link to='/dashboard/myclass'>My Classes</Link></li>
+                            </Slide>
+
+                        </>
 
                     }
                     {
-                         admin &&  <>
-                         <Slide>
-                         <li><Link to='/dashboard/selectclass'>Manage Classes</Link></li>
-                         </Slide>
-                         <Slide>
-                         <li><Link to='/'>Home</Link></li>
-                         </Slide>
-                         <Slide>
-                         <li><a>Sidebar Item 2</a></li>
-                         </Slide>
-                         </>
+                        admin && <>
+                            <Slide>
+                                <li><Link to='/dashboard/selectclass'>Manage Classes</Link></li>
+                            </Slide>
+
+                            <Slide>
+                                <li><a>Sidebar Item 2</a></li>
+                            </Slide>
+                        </>
                     }
                     {
                         !instructor && !admin && <>
-                        <Slide>
-                        <li><Link to='/dashboard/selectclass'>Selected Classes</Link></li>
-                        </Slide>
-                        <Slide>
-                        <li><Link to='/'>Home</Link></li>
-                        </Slide>
-                        <Slide>
-                        <li><a>Sidebar Item 2</a></li>
-                        </Slide>
+                            <Slide>
+                                <li><Link to='/dashboard/selectclass'>Selected Classes <div className="badge badge-secondary badge-outline">{selectedclass.length}</div></Link></li>
+                            </Slide>
+                            <Slide>
+                                <li><Link to='/dashboard/enrollclass'>Enrolled Class</Link></li>
+                            </Slide>
                         </>
                     }
-                    
+                    <Slide>
+                        <li><Link to='/'>Home</Link></li>
+                    </Slide>
+
                 </ul>
 
             </div>

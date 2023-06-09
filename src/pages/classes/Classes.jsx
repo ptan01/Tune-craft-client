@@ -18,6 +18,7 @@ const Classes = () => {
         //     setAllClasses(res.data)
         // })
     },[])
+    console.log(allclasses)
 
     return (
         <div>

@@ -55,16 +55,13 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if(data.insertedId){
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Your work has been saved',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-                }
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
         })
         .catch(err => {

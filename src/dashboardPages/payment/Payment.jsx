@@ -28,7 +28,7 @@ const Payment = () => {
         <div className='w-full'>
             <h2>Class Name : {classes.className}</h2>
             <h2>Price : ${classes.price}</h2>
-
+            <h2>Available seats : {classes.seats}</h2>
 
             <div className='w-1/2 mx-auto'>
                 <Elements stripe={stripePromise}>
