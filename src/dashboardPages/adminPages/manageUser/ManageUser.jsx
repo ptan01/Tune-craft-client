@@ -56,7 +56,6 @@ const ManageUser = () => {
                             <th>Email</th>
                             <th>Make Instructor</th>
                             <th>Make Admin</th>
-                            <th>delete User</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,9 +83,6 @@ const ManageUser = () => {
                                 </th>
                                 <th>
                                     {user?.role === 'admin' ? user.role : <button disabled={user?.role==='instructor'} onClick={()=>handleAdmin(user._id)} className="btn btn-ghost btn-xs">Admin</button>}
-                                </th>
-                                <th>
-                                    <button className="btn btn-ghost btn-xs">delete</button>
                                 </th>
                             </tr>)
                         }

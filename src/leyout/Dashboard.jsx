@@ -2,14 +2,20 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Fade, Flip, Hinge, Slide } from "react-awesome-reveal";
 import useSelectClass from '../hooks/useSelectClass';
+import useIsAdmin from '../hooks/useIsAdmin';
+import useIsInstructor from '../hooks/useIsInstructor';
 
 const Dashboard = () => {
 
     const [selectedclass] = useSelectClass()
 
-    const instructor = false;
+    const [isInstructor] = useIsInstructor()
+    const [isAdmin] = useIsAdmin()
 
-    const admin = true;
+
+    // const instructor = false;
+
+    // const admin = true;
 
     // flex flex-col items-center justify-center
 
@@ -27,7 +33,7 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
                     {
-                        instructor && <>
+                        isInstructor && <>
                             <Slide>
                                 <li><Link to='/dashboard/addclass'>Add a class</Link></li>
                             </Slide>
@@ -39,7 +45,7 @@ const Dashboard = () => {
 
                     }
                     {
-                        admin && <>
+                        isAdmin && <>
                             <Slide>
                                 <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
                             </Slide>
@@ -50,7 +56,7 @@ const Dashboard = () => {
                         </>
                     }
                     {
-                        !instructor && !admin && <>
+                        !isInstructor && !isAdmin && <>
                             <Slide>
                                 <li><Link to='/dashboard/selectclass'>Selected Classes <div className="badge badge-secondary badge-outline">{selectedclass.length}</div></Link></li>
                             </Slide>

@@ -28,6 +28,7 @@ const ClassesCard = ({classes}) => {
                     navigate('/login')
                 }
               })
+            return
         }
 
         const {img, className, price, seats, _id,instructorEmail} = classInfo
