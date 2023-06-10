@@ -10,7 +10,7 @@ const Classes = () => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/all/classes')
+        fetch('http://localhost:5000/all/approve/classes')
         .then(res => res.json())
         .then(data => setAllClasses(data))
         // axiosInstance('/all/classes')
