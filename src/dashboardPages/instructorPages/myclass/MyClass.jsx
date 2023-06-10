@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import { AuthContext } from '../../../provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MyClass = () => {
 
@@ -51,6 +52,7 @@ const MyClass = () => {
                             <th>Name</th>
                             <th>Status</th>
                             <th>Action</th>
+                            <th>Send FeedBack</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,7 +75,10 @@ const MyClass = () => {
                                 </td>
                                 <td>{singleClass.status}</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">update</button>
+                                    <Link to={`/dashboard/update/${singleClass._id}`}><button className="btn btn-ghost btn-xs">update</button></Link>
+                                </th>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">feedBack</button>
                                 </th>
                             </tr>)
                         }
