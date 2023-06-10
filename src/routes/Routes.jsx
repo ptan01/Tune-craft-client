@@ -13,6 +13,7 @@ import PrivetRoute from "./PrivetRoute";
 import Payment from "../dashboardPages/payment/Payment";
 import PaymentHistory from "../dashboardPages/userPages/paymentHistory/PaymentHistory";
 import EnrollClass from "../dashboardPages/userPages/enrollClass/EnrollClass";
+import ManageUser from "../dashboardPages/adminPages/manageUser/ManageUser";
 
 const router = createBrowserRouter([
     {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
         children: [
-            // student pages
+            // student routes
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
                 path: '/dashboard/enrollclass',
                 element: <EnrollClass></EnrollClass>
             },
-            // instructor pages
+            // instructor routes
             {
                 path: '/dashboard/addclass',
                 element: <AddClass></AddClass>
@@ -70,6 +71,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myclass',
                 element: <MyClass></MyClass>,
+            },
+            // admin routes
+            {   
+                path: '/dashboard/manageuser',
+                element: <ManageUser></ManageUser>
             }
         ]
     }

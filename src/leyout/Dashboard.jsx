@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     const instructor = false;
 
-    const admin = false;
+    const admin = true;
 
     // flex flex-col items-center justify-center
 
@@ -41,11 +41,11 @@ const Dashboard = () => {
                     {
                         admin && <>
                             <Slide>
-                                <li><Link to='/dashboard/selectclass'>Manage Classes</Link></li>
+                                <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
                             </Slide>
 
                             <Slide>
-                                <li><a>Sidebar Item 2</a></li>
+                                <li><Link to='/dashboard/manageuser'>Manage Users</Link></li>
                             </Slide>
                         </>
                     }
