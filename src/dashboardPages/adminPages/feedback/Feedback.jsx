@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Feedback = () => {
 
@@ -25,6 +26,15 @@ const Feedback = () => {
         axiosInstance.patch(`/classes/feedback/${id}` ,{feedback: feedback})
         .then(res => {
             console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your Feedback Send Success Fully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
         })
 
     }

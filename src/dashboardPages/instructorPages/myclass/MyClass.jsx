@@ -78,7 +78,7 @@ const MyClass = () => {
                                     <Link to={`/dashboard/update/${singleClass._id}`}><button className="btn btn-outline btn-xs">update</button></Link>
                                 </th>
                                 <th>
-                                    <Link to={`/dashboard/seefeedback/${singleClass._id}`}><button className="btn btn-outline btn-xs">See Feedback</button></Link>
+                                    <Link to={`/dashboard/seefeedback/${singleClass._id}`}><button className="btn btn-outline btn-xs">{singleClass.feedback ? 'see Feedback' : 'NO feedback'}</button></Link>
                                 </th>
                             </tr>)
                         }

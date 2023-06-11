@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import useSelectClass from '../../hooks/useSelectClass';
+import useIsAdmin from '../../hooks/useIsAdmin';
+import useIsInstructor from '../../hooks/useIsInstructor';
 
 const ClassesCard = ({classes}) => {
 
@@ -11,6 +13,8 @@ const ClassesCard = ({classes}) => {
     const {user} = useContext(AuthContext)
     const navigate = useNavigate()
     const [, refetch] = useSelectClass()
+    const [isAdmin] = useIsAdmin()
+    const [isInstructor] = useIsInstructor()
     
     const handleSelect = (classInfo)=>{
 
@@ -22,7 +26,7 @@ const ClassesCard = ({classes}) => {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Go to Login page'
               }).then((result) => {
                 if (result.isConfirmed) {
                     navigate('/login')
@@ -68,7 +72,7 @@ const ClassesCard = ({classes}) => {
                 <p>Available seats: {classes.seats}</p>
                 <p>Price: ${classes.price}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={()=>handleSelect(classes)} disabled={classes.seats < 1 } className="btn btn-primary">Select</button>
+                    <button onClick={()=>handleSelect(classes)} disabled={classes.seats < 1 || isAdmin || isInstructor } className="btn btn-primary">Select</button>
                 </div>
             </div>
         </div>

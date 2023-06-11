@@ -25,6 +25,14 @@ const ManageClasses = () => {
             })
     }
 
+    const handelDeny =(id)=>{
+        axiosInstance.patch(`/classes/deny/${id}`)
+            .then(res => {
+                console.log(res.data)
+                setRefetch(!refetch)
+            })
+    }
+
     return (
         <div>
             <h2>this is manage class</h2>
@@ -74,7 +82,7 @@ const ManageClasses = () => {
                                     <button onClick={()=>handelApprove(classes._id)} disabled={classes.status === 'approved'} className="btn btn-outline btn-xs">Approve</button>
                                 </th>
                                 <th>
-                                    <button disabled={classes.status === 'approved'} className="btn btn-outline btn-xs">Deny</button>
+                                    <button onClick={()=> handelDeny(classes._id)} disabled={classes.status === 'deny'} className="btn btn-outline btn-xs">Deny</button>
                                 </th>
                                 <th>
                                     <Link to={`/dashboard/feedback/${classes._id}`}><button className="btn btn-outline btn-xs">Feedback</button></Link>

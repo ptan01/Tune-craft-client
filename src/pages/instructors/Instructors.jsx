@@ -18,7 +18,7 @@ const Instructors = () => {
         <div>
             <h1>this is instructor page</h1>
 
-            <div className='grid grid-cols-3'>
+            <div className='grid grid-cols-3 gap-5'>
                 {
                     instructors.map(instructor => <div key={instructor._id} className="card w-96 bg-base-100 shadow-xl">
                         <figure>

@@ -5,6 +5,7 @@ import useSelectClass from '../hooks/useSelectClass';
 import useIsAdmin from '../hooks/useIsAdmin';
 import useIsInstructor from '../hooks/useIsInstructor';
 import Navbar from '../shared/navbar/Navbar';
+import Footer from '../shared/footer/Footer';
 
 const Dashboard = () => {
 
@@ -79,6 +80,7 @@ const Dashboard = () => {
 
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

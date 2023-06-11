@@ -5,15 +5,16 @@ import { useQuery } from '@tanstack/react-query';
 
 const useIsInstructor = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
     const [axiosInstance] = useBaseaxios()
     // const [isInstructor, setIsInstructor] = useState(null) 
 
 
     const {data: isInstructor, isLoading} = useQuery({
         queryKey: ['instructor'],
+        enabled: !loading,
         queryFn: async()=> {
-            const res = await axiosInstance(`/users/instructor/${user.email}`)
+            const res = await axiosInstance(`/users/instructor/${user?.email}`)
             console.log(res.data)
             return res.data.instructor
         }
