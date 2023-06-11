@@ -9,7 +9,7 @@ const useIsAdmin = () => {
     const {user} = useContext(AuthContext)
 
 
-    const {data : isAdmin } = useQuery({
+    const {data : isAdmin , isLoading } = useQuery({
         queryKey : ['admin'],
         queryFn: async()=>{
             const res = await axiosInstance(`/users/admin/${user.email}`)
@@ -19,7 +19,7 @@ const useIsAdmin = () => {
     })
 
 
-    return [isAdmin]
+    return [isAdmin, isLoading]
 };
 
 export default useIsAdmin;

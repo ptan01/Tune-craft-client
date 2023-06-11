@@ -10,7 +10,7 @@ const useIsInstructor = () => {
     // const [isInstructor, setIsInstructor] = useState(null) 
 
 
-    const {data: isInstructor} = useQuery({
+    const {data: isInstructor, isLoading} = useQuery({
         queryKey: ['instructor'],
         queryFn: async()=> {
             const res = await axiosInstance(`/users/instructor/${user.email}`)
@@ -31,7 +31,7 @@ const useIsInstructor = () => {
 
 
 
-    return [isInstructor]
+    return [isInstructor, isLoading]
 };
 
 export default useIsInstructor;
