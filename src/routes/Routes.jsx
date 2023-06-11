@@ -18,6 +18,8 @@ import ManageClasses from "../dashboardPages/adminPages/manageClasses/ManageClas
 import UpdateClass from "../dashboardPages/instructorPages/addClass/UpdateClass";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import Feedback from "../dashboardPages/adminPages/feedback/Feedback";
+import SeeFeedback from "../dashboardPages/instructorPages/seeFeedback/SeeFeedback";
 
 const router = createBrowserRouter([
     {
@@ -77,6 +79,10 @@ const router = createBrowserRouter([
                 element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>
             },
             {
+                path: '/dashboard/seefeedback/:id',
+                element: <InstructorRoute><SeeFeedback></SeeFeedback></InstructorRoute>
+            },
+            {
                 path: '/dashboard/myclass',
                 element: <InstructorRoute><MyClass></MyClass>,</InstructorRoute>
             },
@@ -88,6 +94,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageclasses',
                 element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+            },
+            {
+                path: '/dashboard/feedback/:id',
+                element:<Feedback></Feedback>
             }
         ]
     }

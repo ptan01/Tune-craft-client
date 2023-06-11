@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useBaseaxios from '../../../hooks/useBaseaxios';
+import { Link } from 'react-router-dom';
 
 const ManageClasses = () => {
 
@@ -76,7 +77,7 @@ const ManageClasses = () => {
                                     <button disabled={classes.status === 'approved'} className="btn btn-outline btn-xs">Deny</button>
                                 </th>
                                 <th>
-                                    <button className="btn btn-outline btn-xs">Feedback</button>
+                                    <Link to={`/dashboard/feedback/${classes._id}`}><button className="btn btn-outline btn-xs">Feedback</button></Link>
                                 </th>
                             </tr>)
                         }
