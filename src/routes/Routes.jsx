@@ -20,11 +20,13 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import Feedback from "../dashboardPages/adminPages/feedback/Feedback";
 import SeeFeedback from "../dashboardPages/instructorPages/seeFeedback/SeeFeedback";
+import ErrorPage from "../pages/errorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
