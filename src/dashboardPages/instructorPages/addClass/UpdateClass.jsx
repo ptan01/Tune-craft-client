@@ -4,23 +4,35 @@ import useBaseaxios from '../../../hooks/useBaseaxios';
 
 const UpdateClass = () => {
 
-    const id = useParams().id ;
+    const id = useParams().id;
     const [axiosInstance] = useBaseaxios()
     const [classes, setClasses] = useState({})
 
-    useEffect(()=> {
+    useEffect(() => {
         axiosInstance(`http://localhost:5000/classes/${id}`)
-        .then(res=>{
-            setClasses(res.data)
-        })
-    },[])
+            .then(res => {
+                setClasses(res.data)
+            })
+    }, [])
 
     console.log(classes)
 
-    const handleUpdate =(e)=>{
+    const handleUpdate = (e) => {
         e.preventDefault()
 
-        console.log(e.target.name.value, e.target.image.value, e.target.seats.value)
+        const name = e.target.name.value  
+        const img = e.target.image.value
+       const seats= e.target.seats.value
+        
+        const updatedClass = {
+            name,
+            img,
+            seats: parseFloat(seats)
+        }
+        axiosInstance.patch(`classes/update/${id}`, updatedClass)
+        .then(res => {
+            console.log(res.data)
+        })
 
     }
 
