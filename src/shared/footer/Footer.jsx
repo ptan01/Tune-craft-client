@@ -3,7 +3,7 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <footer className='footer-path bg-blue-300 h-[40vh] flex flex-col justify-center'>
+        <footer className='footer-path bg-blue-300 min-h-[40vh] flex flex-col justify-center'>
             <div className="footer p-10 text-base-content">
                 <div>
                     <span className="footer-title">Services</span>

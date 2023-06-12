@@ -10,7 +10,7 @@ const Classes = () => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/all/approve/classes')
+        fetch('https://tune-craft-server.vercel.app/all/approve/classes')
         .then(res => res.json())
         .then(data => setAllClasses(data))
         // axiosInstance('/all/classes')

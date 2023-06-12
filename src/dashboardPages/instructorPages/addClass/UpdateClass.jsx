@@ -9,7 +9,7 @@ const UpdateClass = () => {
     const [classes, setClasses] = useState({})
 
     useEffect(() => {
-        axiosInstance(`http://localhost:5000/classes/${id}`)
+        axiosInstance(`https://tune-craft-server.vercel.app/classes/${id}`)
             .then(res => {
                 setClasses(res.data)
             })

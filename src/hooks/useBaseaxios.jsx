@@ -7,7 +7,7 @@ const useBaseaxios = () => {
     const token = localStorage.getItem('access-token')
 
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:5000',
+        baseURL: 'https://tune-craft-server.vercel.app',
         timeout: 5000,
         headers: {
             authorization : `bearer ${token}`

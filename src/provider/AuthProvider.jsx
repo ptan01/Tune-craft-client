@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, logedUser => {
             setUser(logedUser)
             if (logedUser) {
-                axios.post('http://localhost:5000/jwt', { email: logedUser.email })
+                axios.post('https://tune-craft-server.vercel.app/jwt', { email: logedUser.email })
                     .then(res => {
                         localStorage.setItem('access-token', res.data.token)
                         setLoading(false)

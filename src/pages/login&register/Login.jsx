@@ -46,7 +46,7 @@ const Login = () => {
                 name : user?.displayName ,
                 img : user?.photoURL
             }
-            fetch('http://localhost:5000/users', {
+            fetch('https://tune-craft-server.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json'
