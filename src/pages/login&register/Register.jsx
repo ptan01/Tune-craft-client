@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -9,6 +9,7 @@ const Register = () => {
     const {createUser, updateUser} = useContext(AuthContext);
 
     const [error , setError] = useState('')
+    const navigate = useNavigate()
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -42,10 +43,11 @@ const Register = () => {
                 .then(res => res.json())
                 .then(data => {
                     if(data.insertedId){
+                        navigate('/')
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'Your work has been saved',
+                            title: 'your register success fully',
                             showConfirmButton: false,
                             timer: 1500
                           })

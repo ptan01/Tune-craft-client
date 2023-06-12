@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -9,6 +9,7 @@ const Login = () => {
 
     const [show , setShow] = useState(false)
     const {loginUser, googleLogin} = useContext(AuthContext) ;
+    const navigate = useNavigate()
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -19,6 +20,7 @@ const Login = () => {
         loginUser(data.email, data.password)
         .then(result => {
             const user = result.user ;
+            navigate('/')
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -55,6 +57,7 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
+                navigate('/')
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
