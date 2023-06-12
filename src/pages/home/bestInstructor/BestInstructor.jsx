@@ -24,7 +24,7 @@ const BestInstructor = () => {
             </div>
             <div className='grid lg:grid-cols-3 gap-8'>
                 {
-                    bestInstructor.map(instructor => <div key={instructor._id} className="card w-full bg-base-100 shadow-xl">
+                    bestInstructor.map(instructor => <div key={instructor._id} className="card w-full hover:bg-blue-300 bg-base-100 shadow-xl">
                         <figure>
                             <div className="avatar py-4">
                                 <div className="w-44 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

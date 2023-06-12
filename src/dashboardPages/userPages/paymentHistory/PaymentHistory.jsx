@@ -20,9 +20,9 @@ const PaymentHistory = () => {
         <div>
            <div className='grid grid-cols-2 gap-5 m-2'>
            {
-                enrollDetails.map(details => <div key={details._id} className="card w-full bg-base-100 shadow-xl">
+                enrollDetails.map(details => <div key={details._id} className="card w-full hover:bg-blue-300 bg-base-100 shadow-xl">
                     <div className="card-body">
-                        <h2 className="card-title">{details.className}</h2>
+                        <h2 className="card-title text-red-600">{details.className}</h2>
                         <p>Date :{new Date(details.date).toLocaleDateString()}</p>
                         <p>Enroll Email : {details.email}</p>
                         <p>Instructor : {details.instructor}</p>

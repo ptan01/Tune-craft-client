@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import SimpleBanner from '../../../shared/simpleBanner/SimpleBanner';
 
 const MyClass = () => {
 
@@ -30,6 +31,7 @@ const MyClass = () => {
 
     return (
         <div>
+            <SimpleBanner heading="Your Classes" subHeading='You can see you Status and analyze you class'></SimpleBanner>
             <div className="stats shadow">
 
                 <div className="stat">

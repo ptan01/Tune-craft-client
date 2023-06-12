@@ -26,7 +26,7 @@ const PopularClasses = () => {
             </div>
             <div className='grid lg:grid-cols-3 gap-8'>
                 {
-                    popularClasses.map(classes => <div className={`${classes.seats < 1 ? " bg-red-600" : " "} card card-side bg-base-100 shadow-xl`}>
+                    popularClasses.map(classes => <div className={`${classes.seats < 1 ? " bg-red-600" : " "} card hover:bg-blue-300 card-side bg-base-100 shadow-xl`}>
                         <figure><img className='lg:w-[400px] lg:h-[300px]' src={classes.img} alt="Movie" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{classes.className}</h2>

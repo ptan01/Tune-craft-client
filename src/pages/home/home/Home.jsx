@@ -3,6 +3,7 @@ import Banner from '../banner/Banner';
 import { AuthContext } from '../../../provider/AuthProvider';
 import BestInstructor from '../bestInstructor/BestInstructor';
 import PopularClasses from '../PopularClasses/PopularClasses';
+import InstrumentMaintenance from '../instrumentMaintenance/InstrumentMaintenance';
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner></Banner>
             <PopularClasses></PopularClasses>
             <BestInstructor></BestInstructor>
+            <InstrumentMaintenance></InstrumentMaintenance>
         </div>
     );
 };

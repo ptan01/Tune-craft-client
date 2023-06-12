@@ -4,6 +4,7 @@ import useBaseaxios from '../../hooks/useBaseaxios';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
+import SimpleBanner from '../../shared/simpleBanner/SimpleBanner';
 
 
 
@@ -26,6 +27,7 @@ const Payment = () => {
 
     return (
         <div className='w-full'>
+            <SimpleBanner heading='please payment' subHeading='Provide Your Card And Enroll Class'></SimpleBanner>
             <h2>Class Name : {classes.className}</h2>
             <h2>Price : ${classes.price}</h2>
             <h2>Available seats : {classes.seats}</h2>

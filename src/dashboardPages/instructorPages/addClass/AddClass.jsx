@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import Swal from 'sweetalert2';
+import SimpleBanner from '../../../shared/simpleBanner/SimpleBanner';
 
 const AddClass = () => {
 
@@ -79,7 +80,10 @@ const AddClass = () => {
 
 
     return (
-        <div className='flex flex-col items-center justify-center h-screen'>
+        <div className='flex flex-col items-center h-screen'>
+            <div className='w-full'>
+            <SimpleBanner heading="add classes" subHeading='added Your experience class to publish'></SimpleBanner>
+            </div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div>
@@ -112,7 +116,7 @@ const AddClass = () => {
                     <input {...register("photo")} type="file" className="file-input file-input-bordered file-input-sm w-full max-w-xs" />
                 </div> */}
                     <div className='text-center'>
-                        <input className='btn btn-sm ' type="submit" value="Add Class" />
+                        <input className='btn btn-sm mt-5 bg-blue-300' type="submit" value="Add Class" />
                     </div>
                 </form>
             </div>

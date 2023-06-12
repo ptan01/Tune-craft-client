@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import { AuthContext } from '../../../provider/AuthProvider';
+import SimpleBanner from '../../../shared/simpleBanner/SimpleBanner';
 
 const EnrollClass = () => {
 
@@ -23,7 +24,7 @@ const EnrollClass = () => {
 
     return (
         <div>
-
+            <SimpleBanner heading="your enroll class" subHeading="your success fully payment classes"></SimpleBanner>
 
             <div className="overflow-x-auto">
                 <table className="table">

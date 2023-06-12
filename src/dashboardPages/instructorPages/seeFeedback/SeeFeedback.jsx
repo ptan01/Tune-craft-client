@@ -26,7 +26,7 @@ const SeeFeedback = () => {
     return (
         <div>
 
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-blue-300 shadow-xl">
                 <div className="card-body">
                     <p>{classes.feedback ? classes.feedback : 'This classes Have no FeedBack'}</p>
                 </div>

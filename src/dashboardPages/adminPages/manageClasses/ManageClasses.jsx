@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import { Link } from 'react-router-dom';
+import SimpleBanner from '../../../shared/simpleBanner/SimpleBanner';
 
 const ManageClasses = () => {
 
@@ -35,7 +36,7 @@ const ManageClasses = () => {
 
     return (
         <div>
-            <h2>this is manage class</h2>
+            <SimpleBanner heading="manage instructor Class" subHeading='approve deny and send feed back your instructor class'></SimpleBanner>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

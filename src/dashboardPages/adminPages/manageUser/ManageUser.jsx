@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import useUser from '../../../hooks/useUser';
+import SimpleBanner from '../../../shared/simpleBanner/SimpleBanner';
 
 const ManageUser = () => {
 
@@ -40,8 +41,7 @@ const ManageUser = () => {
 
     return (
         <div>
-            <h2>This is manage user page</h2>
-
+            <SimpleBanner heading='Manage users' subHeading='update user to instructor or admin'></SimpleBanner>
 
             <div className="overflow-x-auto">
                 <table className="table">

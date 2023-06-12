@@ -3,6 +3,7 @@ import useSelectClass from '../../../hooks/useSelectClass';
 import { Link } from 'react-router-dom';
 import useBaseaxios from '../../../hooks/useBaseaxios';
 import Swal from 'sweetalert2';
+import SimpleBanner from '../../../shared/simpleBanner/SimpleBanner';
 
 const SelectClass = () => {
 
@@ -41,6 +42,7 @@ const SelectClass = () => {
 
     return (
         <div className=' w-full'>
+            <SimpleBanner heading="your selected class" subHeading="pay your selected class"></SimpleBanner>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
